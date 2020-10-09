@@ -1443,7 +1443,9 @@ can be displayed on the main fortress mode screen:
 The file :file:`dfhack-config/dwarfmonitor.json` can be edited to control the
 positions and settings of all widgets displayed. This file should contain a
 JSON object with the key ``widgets`` containing an array of objects - see the
-included file in the ``dfhack-config`` folder for an example::
+included file in the ``dfhack-config`` folder for an example:
+
+.. code-block:: lua
 
     {
         "widgets": [
@@ -2635,25 +2637,34 @@ Usage:
 
 createitem
 ==========
-Allows creating new items of arbitrary types and made of arbitrary materials.
-By default, items created are spawned at the feet of the selected unit.
+Allows creating new items of arbitrary types and made of arbitrary materials. A
+unit must be selected in-game to use this command. By default, items created are
+spawned at the feet of the selected unit.
 
 Specify the item and material information as you would indicate them in
 custom reaction raws, with the following differences:
 
 * Separate the item and material with a space rather than a colon
-* If the item has no subtype, omit the :NONE
-* If the item is REMAINS, FISH, FISH_RAW, VERMIN, PET, or EGG,
-  specify a CREATURE:CASTE pair instead of a material token.
+* If the item has no subtype, the ``:NONE`` can be omitted
+* If the item is ``REMAINS``, ``FISH``, ``FISH_RAW``, ``VERMIN``, ``PET``, or ``EGG``,
+  specify a ``CREATURE:CASTE`` pair instead of a material token.
 
 Corpses, body parts, and prepared meals cannot be created using this tool.
 
-Examples::
+To obtain the item and material tokens of an existing item, run
+``createitem inspect``. Its output can be passed directly as arguments to
+``createitem`` to create new matching items, as long as the item type is
+supported.
+
+Examples:
+
+* Create 2 pairs of steel gauntlets::
 
     createitem GLOVES:ITEM_GLOVES_GAUNTLETS INORGANIC:STEEL 2
-            Create 2 pairs of steel gauntlets.
+
+* Create tower-cap logs::
+
     createitem WOOD PLANT_MAT:TOWER_CAP:WOOD
-            Create tower-cap logs.
 
 For more examples, :wiki:`see this wiki page <Utility:DFHack/createitem>`.
 

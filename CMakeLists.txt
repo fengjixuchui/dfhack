@@ -2,6 +2,7 @@
 
 ## some generic CMake magic
 cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+cmake_policy(SET CMP0048 NEW)
 project(dfhack)
 
 if("${CMAKE_GENERATOR}" STREQUAL Ninja)
@@ -406,6 +407,7 @@ endif()
 include_directories(depends/tthread)
 include_directories(${ZLIB_INCLUDE_DIRS})
 include_directories(depends/clsocket/src)
+include_directories(depends/xlsxio/include)
 add_subdirectory(depends)
 
 find_package(Git REQUIRED)
@@ -440,6 +442,7 @@ if(BUILD_DOCS)
 
     file(GLOB SPHINX_DEPS
         "${CMAKE_CURRENT_SOURCE_DIR}/docs/*.rst"
+        "${CMAKE_CURRENT_SOURCE_DIR}/docs/guides/*.rst"
         "${CMAKE_CURRENT_SOURCE_DIR}/docs/changelog.txt"
         "${CMAKE_CURRENT_SOURCE_DIR}/docs/gen_changelog.py"
         "${CMAKE_CURRENT_SOURCE_DIR}/docs/images/*.png"

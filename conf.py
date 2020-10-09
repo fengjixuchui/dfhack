@@ -195,6 +195,7 @@ needs_sphinx = '1.8'
 extensions = [
     'sphinx.ext.extlinks',
     'dfhack.changelog',
+    'dfhack.lexer',
 ]
 
 # This config value must be a dictionary of external sites, mapping unique
@@ -207,6 +208,8 @@ extlinks = {
     'dffd': ('http://dffd.bay12games.com/file.php?id=%s', 'DFFD file '),
     'bug': ('http://www.bay12games.com/dwarves/mantisbt/view.php?id=%s',
             'Bug '),
+    'source': ('https://github.com/DFHack/dfhack/tree/develop/%s', ''),
+    'source:scripts': ('https://github.com/DFHack/scripts/tree/master/%s', ''),
     'issue': ('https://github.com/DFHack/dfhack/issues/%s', 'Issue '),
     'commit': ('https://github.com/DFHack/dfhack/commit/%s', 'Commit '),
 }
@@ -279,6 +282,9 @@ default_role = 'ref'
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
+
+# The default language to highlight source code in.
+highlight_language = 'dfhack'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
